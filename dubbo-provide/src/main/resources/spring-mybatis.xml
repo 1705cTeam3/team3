@@ -27,13 +27,8 @@
 			</list>
 		</property>
 	</bean>
-	
-	
-	<bean id="parentDataSource" class="org.apache.commons.dbcp.BasicDataSource">
-	</bean>
-	
 	<!-- 配置主数据源 获取数据源 -->
-	<bean id="masterdataSource" parent="parentDataSource">
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
 		<property name="driverClassName" value="${zhuku.jdbc.driver}" />
 		<property name="url" value="${zhuku.jdbc.url}" />
 		<property name="username" value="${zhuku.jdbc.username}" />
@@ -45,39 +40,6 @@
 		<!--maxIdle: 最大空闲连接 -->
 		<property name="maxIdle" value="${zhuku.jdbc.maxIdle}" />
 	</bean>
-
-	<!-- 配置从数据源 获取数据源 -->
-	<bean id="slavedataSource" parent="parentDataSource">
-		<property name="driverClassName" value="${congku.jdbc.driver}" />
-		<property name="url" value="${congku.jdbc.url}" />
-		<property name="username" value="${congku.jdbc.username}" />
-		<property name="password" value="${congku.jdbc.password}" />
-		<!--maxActive: 最大连接数量 -->
-		<property name="maxActive" value="${congku.jdbc.maxActive}" />
-		<!--minIdle: 最小空闲连接 -->
-		<property name="minIdle" value="${congku.jdbc.minIdle}" />
-		<!--maxIdle: 最大空闲连接 -->
-		<property name="maxIdle" value="${congku.jdbc.maxIdle}" />
-	</bean>
-	
-	
-   <!-- 配置数据源主从关系以及实现类 -->
-	<bean id="dataSource" class="com.jk.provide.service.aop.DynamicDataSource">
-	<property name="targetDataSources">
-		<map key-type="java.lang.String">
-		 <entry key="slave" value-ref="slavedataSource"/>
-		</map>
-	</property>
-	<property name="defaultTargetDataSource" ref="masterdataSource"></property>
-	</bean>
-	
-	   <!-- 配置数据源切换 -->
-	<bean id="dataSourceAdvice" class="com.jk.provide.service.aop.DataSourceAdvice"/>
-		<aop:config>
-			<aop:advisor pointcut="execution(* com.jk.*.service..*Impl.*(..))" 
-			advice-ref="dataSourceAdvice"/>
-		</aop:config>
-	
 
 	<!-- mybatis的SqlSession的工厂: SqlSessionFactoryBean dataSource:引用数据源 MyBatis定义数据源,同意加载配置 -->
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
