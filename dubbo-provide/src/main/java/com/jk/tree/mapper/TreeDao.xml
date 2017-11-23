@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.jk.tree.dao.TreeDao" >
   <resultMap id="BaseResultMap" type="com.jk.tree.entity.MenuModel" >
-     <id column="id" property="id" jdbcType="VARCHAR" />
+   <id column="id" property="id" jdbcType="VARCHAR" />
     <result column="pid" property="pid" jdbcType="VARCHAR" />
     <result column="name" property="name" jdbcType="VARCHAR" />
     <result column="iconCls" property="iconCls" jdbcType="VARCHAR" />
@@ -10,8 +10,8 @@
   </resultMap>
   
   <select id="getTreeList" resultMap="BaseResultMap" >
-    SELECT p.PERMISSION_ID,p.PID,p.NAME,p.ICONCLS,p.URL FROM PERMISSION AS p
-	where p.STATUS='A' and p.TYPE='F' and p.ISUSED='Y'
+   SELECT p.PERMISSION_ID as id ,p.PID as pid ,p.NAME as name ,p.ICONCLS as iconCls ,p.URL as url 
+   FROM PERMISSION AS p where p.STATUS='A' and p.TYPE='F' and p.ISUSED='Y'
   </select>
   
 </mapper>

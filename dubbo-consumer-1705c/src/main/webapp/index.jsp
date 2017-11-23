@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -18,7 +17,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<jsp:include page="layout/script.jsp"></jsp:include>
 	<script type="text/javascript">
 		$(function(){
-			initMenu(); 
+			initMenu();
 			if (jqueryUtil.isLessThanIe8()) {
 				$.messager.show({
 					title : '警告',
@@ -52,7 +51,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				$.messager.alert("提示", "获取菜单出错,请重新登陆!");
 			});
 		}
-		
 	</script>
 	<style type="text/css">
 	#menuAccordion a.l-btn span span.l-btn-text {
@@ -80,10 +78,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<div data-options="region:'north',border:false" style="height:40px;background:#EEE;padding:10px;overflow: hidden;"  href="layout/north.jsp"></div>
 	<div data-options="region:'west',split:true,title:'主要菜单'" style="width:200px;">
 			<div id="menuAccordion"></div>
-			<a href="javascript:jk()">123456</a>
 	</div> 
 	<div data-options="region:'south',border:false" style="height:25px;background:#EEE;padding:5px;" href="layout/south.jsp"></div>
-	<div data-options="region:'center',plain:true,title:'欢迎使用ERP'" style="overflow: hidden;"  href="layout/center.jsp" id="tab"></div>
+	<div data-options="region:'center',plain:true,title:'欢迎使用ERP'" style="overflow: hidden;"  href="layout/center.jsp">
+	
+	
+	</div>
 <%--	<jsp:include page="user/loginAndReg.jsp"></jsp:include>--%>
 </body>
 </html>
