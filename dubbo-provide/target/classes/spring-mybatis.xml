@@ -79,6 +79,6 @@
 
 	<!-- 定义那些类使用事务 -->
 	<aop:config>
-		<aop:advisor pointcut="execution(* com.jk.**.service.*.*(..))" advice-ref="txAdvice" />
+		<aop:advisor pointcut="execution(* com.jk.*.service.*.*(..))" advice-ref="txAdvice" />
 	</aop:config>
 </beans> 

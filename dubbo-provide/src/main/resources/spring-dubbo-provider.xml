@@ -25,9 +25,9 @@
    <!-- 提供方应用名称信息，这个相当于起一个名字，我们dubbo管理页面比较清晰是哪个应用暴露出来的,保持唯一性 -->  
    <dubbo:application name="dubbo-provide"></dubbo:application>  
    <!-- 使用zookeeper注册中心暴露服务地址 -->    
-   <dubbo:registry address="zookeeper://192.168.1.122:2181" register="" check="false" subscribe="false" />
+   <dubbo:registry address="zookeeper://127.0.0.1:2181" register="" check="false" subscribe="false" timeout="5000"/>
    <!-- dubbo端口号 -->  
    <dubbo:protocol name="dubbo" port="20881" ></dubbo:protocol>
    
-   <dubbo:service interface="com.jk.provide.service.TextService" ref="userservice"></dubbo:service> 
+   <dubbo:service interface="com.jk.tree.service.TreeService" ref="treeService"></dubbo:service> 
  </beans>	
