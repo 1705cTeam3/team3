@@ -52,7 +52,7 @@
 		basePackage:指定sql映射文件/接口所在的包（自动扫描） -->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 		<!-- mybatis没有dao层 mybatis的映射接口充当dao层 -->
-		<property name="basePackage" value="com.jk.**.dao" />
+		<property name="basePackage" value="com.jk.**.mapper" />
 		<!-- 注入sqlSessionFactory 相当于把Hibernate的sessionFactory注入到HibernateDaoSupport一样 -->
 		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
 	</bean>

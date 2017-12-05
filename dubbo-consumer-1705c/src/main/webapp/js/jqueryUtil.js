@@ -5,16 +5,16 @@
 	//修改ajax默认设置
 		$.ajaxSetup({
 			type : 'POST',
-			error : function(XMLHttpRequest, textStatus, errorThrown) {
+			/*error : function(XMLHttpRequest, textStatus, errorThrown) {
 				$.messager.progress('close');
 				$.messager.alert('错误', XMLHttpRequest.responseText);
-			}
+			}*/
 		});
 		
-		var easyuiErrorFunction = function(XMLHttpRequest) {
+		/*var easyuiErrorFunction = function(XMLHttpRequest) {
 			$.messager.progress('close');
 			$.messager.alert('错误', XMLHttpRequest.responseText);
-		};
+		};*/
 		$.fn.datagrid.defaults.onLoadError = easyuiErrorFunction;
 		$.fn.treegrid.defaults.onLoadError = easyuiErrorFunction;
 		$.fn.tree.defaults.onLoadError = easyuiErrorFunction;
