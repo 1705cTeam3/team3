@@ -3,24 +3,24 @@
     //全局系统对象
     window['jqueryUtil'] = {};
 	//修改ajax默认设置
-		$.ajaxSetup({
+		/*$.ajaxSetup({
 			type : 'POST',
-			/*error : function(XMLHttpRequest, textStatus, errorThrown) {
+			error : function(XMLHttpRequest, textStatus, errorThrown) {
 				$.messager.progress('close');
 				$.messager.alert('错误', XMLHttpRequest.responseText);
-			}*/
+			}
 		});
 		
-		/*var easyuiErrorFunction = function(XMLHttpRequest) {
+		var easyuiErrorFunction = function(XMLHttpRequest) {
 			$.messager.progress('close');
 			$.messager.alert('错误', XMLHttpRequest.responseText);
-		};*/
+		};
 		$.fn.datagrid.defaults.onLoadError = easyuiErrorFunction;
 		$.fn.treegrid.defaults.onLoadError = easyuiErrorFunction;
 		$.fn.tree.defaults.onLoadError = easyuiErrorFunction;
 		$.fn.combogrid.defaults.onLoadError = easyuiErrorFunction;
 		$.fn.combobox.defaults.onLoadError = easyuiErrorFunction;
-		$.fn.form.defaults.onLoadError = easyuiErrorFunction;
+		$.fn.form.defaults.onLoadError = easyuiErrorFunction;*/
 		/**
 		 * 取消easyui默认开启的parser
 		 * 在页面加载之前，先开启一个进度条
@@ -535,6 +535,7 @@
 					text : '确定',
 					iconCls : 'icon-ok',
 					handler : function() {
+						//点击确定重新加载datagrid
 						$dg.datagrid('reload',jqueryUtil.serializeObject($(formId)));
 					}
 				}, {

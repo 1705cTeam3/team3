@@ -22,10 +22,12 @@ public class AuthImage extends HttpServlet  {
         String verifyCode = VerifyCodeUtils.generateVerifyCode(4);  
         //存入会话session  
         HttpSession session = request.getSession(true);  
+        System.err.println("============="+verifyCode.toLowerCase()+"===================");
         session.setAttribute("rand", verifyCode.toLowerCase());  
         //生成图片  
         int w = 100, h = 30;  
         VerifyCodeUtils.outputImage(w, h, response.getOutputStream(), verifyCode);  
   
-    }  
+    }
+    
 } 

@@ -17,6 +17,9 @@
 		识别类中有关于spring的注解 注解 其实就是在java类当中编写一个标志，能够被java代码所识别，通过该注解的形式，做对应的代码操作 -->
 	<context:component-scan base-package="com.jk">
 	</context:component-scan>
+	
+	<!-- 	引入mongodb配置文件 -->
+	<import resource="classpath:spring-mongo.xml"/>
 
 	<!-- 不需要扫描service等等 -->
 	<!-- 配置数据源属性文件 spring读取properties文件所用工具类 -->
@@ -52,7 +55,7 @@
 		basePackage:指定sql映射文件/接口所在的包（自动扫描） -->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 		<!-- mybatis没有dao层 mybatis的映射接口充当dao层 -->
-		<property name="basePackage" value="com.jk.**.mapper" />
+		<property name="basePackage" value="com.jk.**.dao" />
 		<!-- 注入sqlSessionFactory 相当于把Hibernate的sessionFactory注入到HibernateDaoSupport一样 -->
 		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
 	</bean>
@@ -73,6 +76,7 @@
 			<tx:method name="del*" propagation="REQUIRED" rollback-for="java.lang.Exception" />
 			<tx:method name="insert*" propagation="REQUIRED" rollback-for="java.lang.Exception" />
 			<tx:method name="set*" propagation="REQUIRED" rollback-for="java.lang.Exception" />
+			<tx:method name="ed*" propagation="REQUIRED" rollback-for="java.lang.Exception" />
 			<tx:method name="*" propagation="REQUIRED" read-only="true" />
 		</tx:attributes>
 	</tx:advice>

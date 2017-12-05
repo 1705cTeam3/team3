@@ -6,7 +6,7 @@ public class UUIDUtil {
 
 	
     /**  
-10.     * �Զ����32λ��UUid����Ӧ��ݿ������id���в����á�  
+10.     * UUID去-
 11.     * @return  
 12.     */  
    public static String getUUID() {  

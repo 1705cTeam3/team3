@@ -27,7 +27,7 @@
     N_Order, userCode, userPost, C_ZW, C_LINKUSER, N_RYLX, N_SHOW_USER, N_TXL, N_SFKQ
   </sql>
   
-  <select id="getAllUserList" resultMap="BaseResultMap" parameterType="java.util.List" >
+  <select id="getAllUserList" resultMap="BaseResultMap" > 
     select 
     <include refid="Base_Column_List" />
     from t_aty_user

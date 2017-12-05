@@ -5,6 +5,8 @@ import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
+import org.apache.shiro.crypto.hash.Md5Hash;
+
 import sun.misc.BASE64Encoder;
 
 public class Md5Util {
@@ -41,4 +43,11 @@ public class Md5Util {
     public static String fillMD5(String md5){
         return md5.length()==32?md5:fillMD5("0"+md5);
     }
+
+    public static String createPassword(String password, String salt, int hashIterations) {
+        Md5Hash md5Hash = new Md5Hash(password.trim(), salt, hashIterations);
+        return md5Hash.toString();
+    }
+
+	
 }
