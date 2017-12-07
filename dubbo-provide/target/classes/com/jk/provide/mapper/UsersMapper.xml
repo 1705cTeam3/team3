@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jk.dao.TextDao" >
+  <resultMap id="Base_Column_List" type="com.jk.provide.entity.Users" >
+    <id column="USER_ID" property="userId" jdbcType="INTEGER" />
+    <result column="MYID" property="myid" jdbcType="VARCHAR" />
+    <result column="ACCOUNT" property="account" jdbcType="VARCHAR" />
+    <result column="NAME" property="name" jdbcType="VARCHAR" />
+    <result column="ORGANIZE_ID" property="organizeId" jdbcType="INTEGER" />
+    <result column="ORGANIZE_NAME" property="organizeName" jdbcType="VARCHAR" />
+    <result column="DUTY_ID" property="dutyId" jdbcType="INTEGER" />
+    <result column="TITLE_ID" property="titleId" jdbcType="INTEGER" />
+    <result column="PASSWORD" property="password" jdbcType="VARCHAR" />
+    <result column="EMAIL" property="email" jdbcType="VARCHAR" />
+    <result column="LANG" property="lang" jdbcType="VARCHAR" />
+    <result column="THEME" property="theme" jdbcType="VARCHAR" />
+    <result column="FIRST_VISIT" property="firstVisit" jdbcType="TIMESTAMP" />
+    <result column="PREVIOUS_VISIT" property="previousVisit" jdbcType="TIMESTAMP" />
+    <result column="LAST_VISITS" property="lastVisits" jdbcType="TIMESTAMP" />
+    <result column="LOGIN_COUNT" property="loginCount" jdbcType="INTEGER" />
+    <result column="ISEMPLOYEE" property="isemployee" jdbcType="INTEGER" />
+    <result column="STATUS" property="status" jdbcType="CHAR" />
+    <result column="IP" property="ip" jdbcType="VARCHAR" />
+    <result column="DESCRIPTION" property="description" jdbcType="VARCHAR" />
+    <result column="QUESTION_ID" property="questionId" jdbcType="INTEGER" />
+    <result column="ANSWER" property="answer" jdbcType="VARCHAR" />
+    <result column="ISONLINE" property="isonline" jdbcType="INTEGER" />
+    <result column="CREATED" property="created" jdbcType="TIMESTAMP" />
+    <result column="LASTMOD" property="lastmod" jdbcType="TIMESTAMP" />
+    <result column="CREATER" property="creater" jdbcType="INTEGER" />
+    <result column="MODIFYER" property="modifyer" jdbcType="INTEGER" />
+    <result column="TEL" property="tel" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column" >
+    USER_ID, MYID, ACCOUNT, NAME, ORGANIZE_ID, ORGANIZE_NAME, DUTY_ID, TITLE_ID, PASSWORD, 
+    EMAIL, LANG, THEME, FIRST_VISIT, PREVIOUS_VISIT, LAST_VISITS, LOGIN_COUNT, ISEMPLOYEE, 
+    STATUS, IP, DESCRIPTION, QUESTION_ID, ANSWER, ISONLINE, CREATED, LASTMOD, CREATER, 
+    MODIFYER, TEL
+  </sql>
+  
+  <select id="queryLogin" resultMap="Base_Column_List" parameterType="com.jk.provide.entity.Users" >
+    select 
+    <include refid="Base_Column" />
+    from users
+    where NAME = #{name}
+  </select>
+  
+   <select id="queryLoginById" resultMap="Base_Column_List" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column" />
+    from users 
+    where NAME = #{name}
+  </select>
+	  
+	<!--   ███分页count lxx 2017年11月26日 15:26:17███-->
+    <select id="getCount" resultType="int" parameterType="java.util.Map" >
+	    select 
+	    count(USER_ID)
+	    from users 
+	    ${sql}
+    </select>
+
+	<!-- ███分页list lxx 2017年11月26日 15:26:21███ -->
+	<select id="getListAll" resultMap="Base_Column_List" parameterType="java.util.Map" >
+	  select  <include refid="Base_Column" /> from users 
+	  ${sql}   
+	  order by USER_ID desc limit  #{start}, #{size}
+	</select>
+  
+	<delete id="delUsers" parameterType="java.lang.Integer" >
+	  delete from users
+	  where USER_ID = #{userId,jdbcType=INTEGER}
+	</delete>
+	  
+  
+  
+</mapper>

@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jk.dao.TreeGridMapper" >
+  <resultMap id="BaseResultMap" type="com.jk.provide.entity.PermissionBean" >
+    <id column="PERMISSION_ID" property="permissionId" jdbcType="INTEGER" />
+    <result column="PID" property="pid" jdbcType="INTEGER" />
+    <result column="NAME" property="name" jdbcType="VARCHAR" />
+    <result column="PNAME" property="pname" jdbcType="VARCHAR" />
+    <result column="SORT" property="sort" jdbcType="INTEGER" />
+    <result column="MYID" property="myid" jdbcType="VARCHAR" />
+    <result column="TYPE" property="type" jdbcType="CHAR" />
+    <result column="ISUSED" property="isused" jdbcType="CHAR" />
+    <result column="STATE" property="state" jdbcType="VARCHAR" />
+    <result column="URL" property="url" jdbcType="VARCHAR" />
+    <result column="ICONCLS" property="iconcls" jdbcType="VARCHAR" />
+    <result column="STATUS" property="status" jdbcType="CHAR" />
+    <result column="DESCRIPTION" property="description" jdbcType="VARCHAR" />
+    <result column="CREATED" property="created" jdbcType="TIMESTAMP" />
+    <result column="LASTMOD" property="lastmod" jdbcType="TIMESTAMP" />
+    <result column="CREATER" property="creater" jdbcType="INTEGER" />
+    <result column="MODIFYER" property="modifyer" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    PERMISSION_ID, PID, NAME, PNAME, SORT, MYID, TYPE, ISUSED, STATE, URL, ICONCLS, STATUS, 
+    DESCRIPTION, CREATED, LASTMOD, CREATER, MODIFYER
+  </sql>
+  <select id="getSelTreeList" resultMap="BaseResultMap" >
+    select 
+    <include refid="Base_Column_List" />
+    from permission_leng
+  </select>
+  
+<!--   addInfo -->
+	<insert id="addInfo" parameterType="com.jk.provide.entity.PermissionBean">
+	    insert into permission_leng
+	    <trim prefix="(" suffix=")" suffixOverrides="," >
+	      <if test="permissionId != null" >
+	        PERMISSION_ID,
+	      </if>
+	      <if test="pid != null" >
+	        PID,
+	      </if>
+	      <if test="name != null" >
+	        NAME,
+	      </if>
+	      <if test="pname != null" >
+	        PNAME,
+	      </if>
+	      <if test="sort != null" >
+	        SORT,
+	      </if>
+	      <if test="myid != null" >
+	        MYID,
+	      </if>
+	      <if test="type != null" >
+	        TYPE,
+	      </if>
+	      <if test="isused != null" >
+	        ISUSED,
+	      </if>
+	      <if test="state != null" >
+	        STATE,
+	      </if>
+	      <if test="url != null" >
+	        URL,
+	      </if>
+	      <if test="iconcls != null" >
+	        ICONCLS,
+	      </if>
+	      <if test="status != null" >
+	        STATUS,
+	      </if>
+	      <if test="description != null" >
+	        DESCRIPTION,
+	      </if>
+	      <if test="created != null" >
+	        CREATED,
+	      </if>
+	      <if test="lastmod != null" >
+	        LASTMOD,
+	      </if>
+	      <if test="creater != null" >
+	        CREATER,
+	      </if>
+	      <if test="modifyer != null" >
+	        MODIFYER,
+	      </if>
+	    </trim>
+	    <trim prefix="values (" suffix=")" suffixOverrides="," >
+	      <if test="permissionId != null" >
+	        #{permissionId,jdbcType=INTEGER},
+	      </if>
+	      <if test="pid != null" >
+	        #{pid,jdbcType=INTEGER},
+	      </if>
+	      <if test="name != null" >
+	        #{name,jdbcType=VARCHAR},
+	      </if>
+	      <if test="pname != null" >
+	        #{pname,jdbcType=VARCHAR},
+	      </if>
+	      <if test="sort != null" >
+	        #{sort,jdbcType=INTEGER},
+	      </if>
+	      <if test="myid != null" >
+	        #{myid,jdbcType=VARCHAR},
+	      </if>
+	      <if test="type != null" >
+	        #{type,jdbcType=CHAR},
+	      </if>
+	      <if test="isused != null" >
+	        #{isused,jdbcType=CHAR},
+	      </if>
+	      <if test="state != null" >
+	        #{state,jdbcType=VARCHAR},
+	      </if>
+	      <if test="url != null" >
+	        #{url,jdbcType=VARCHAR},
+	      </if>
+	      <if test="iconcls != null" >
+	        #{iconcls,jdbcType=VARCHAR},
+	      </if>
+	      <if test="status != null" >
+	        #{status,jdbcType=CHAR},
+	      </if>
+	      <if test="description != null" >
+	        #{description,jdbcType=VARCHAR},
+	      </if>
+	      <if test="created != null" >
+	        #{created,jdbcType=TIMESTAMP},
+	      </if>
+	      <if test="lastmod != null" >
+	        #{lastmod,jdbcType=TIMESTAMP},
+	      </if>
+	      <if test="creater != null" >
+	        #{creater,jdbcType=INTEGER},
+	      </if>
+	      <if test="modifyer != null" >
+	        #{modifyer,jdbcType=INTEGER},
+	      </if>
+	    </trim>
+	  </insert>
+	  
+<!-- 	  editInfo修改信息 -->
+	  <update id="editInfo" parameterType="com.jk.provide.entity.PermissionBean" >
+		    update permission_leng
+		    <set >
+		      <if test="pid != null" >
+		        PID = #{pid,jdbcType=INTEGER},
+		      </if>
+		      <if test="name != null" >
+		        NAME = #{name,jdbcType=VARCHAR},
+		      </if>
+		      <if test="pname != null" >
+		        PNAME = #{pname,jdbcType=VARCHAR},
+		      </if>
+		      <if test="sort != null" >
+		        SORT = #{sort,jdbcType=INTEGER},
+		      </if>
+		      <if test="myid != null" >
+		        MYID = #{myid,jdbcType=VARCHAR},
+		      </if>
+		      <if test="type != null" >
+		        TYPE = #{type,jdbcType=CHAR},
+		      </if>
+		      <if test="isused != null" >
+		        ISUSED = #{isused,jdbcType=CHAR},
+		      </if>
+		      <if test="state != null" >
+		        STATE = #{state,jdbcType=VARCHAR},
+		      </if>
+		      <if test="url != null" >
+		        URL = #{url,jdbcType=VARCHAR},
+		      </if>
+		      <if test="iconcls != null" >
+		        ICONCLS = #{iconcls,jdbcType=VARCHAR},
+		      </if>
+		      <if test="status != null" >
+		        STATUS = #{status,jdbcType=CHAR},
+		      </if>
+		      <if test="description != null" >
+		        DESCRIPTION = #{description,jdbcType=VARCHAR},
+		      </if>
+		      <if test="created != null" >
+		        CREATED = #{created,jdbcType=TIMESTAMP},
+		      </if>
+		      <if test="lastmod != null" >
+		        LASTMOD = #{lastmod,jdbcType=TIMESTAMP},
+		      </if>
+		      <if test="creater != null" >
+		        CREATER = #{creater,jdbcType=INTEGER},
+		      </if>
+		      <if test="modifyer != null" >
+		        MODIFYER = #{modifyer,jdbcType=INTEGER},
+		      </if>
+		    </set>
+		    where PERMISSION_ID = #{permissionId,jdbcType=INTEGER}
+	  </update>
+	  
+<!-- 	  delInfo -->
+	<delete id="delInfo" parameterType="java.lang.Integer" >
+	    delete from permission_leng
+	    where PERMISSION_ID = #{permissionId,jdbcType=INTEGER}
+	</delete>
+
+	  
+</mapper>
