@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jk.dao.TextDao" >
+  <resultMap id="BaseResultMap" type="com.jk.provide.entity.LoginUser" >
+    <id column="C_ID" property="cId" jdbcType="VARCHAR" />
+    <result column="C_LoginID" property="cLoginid" jdbcType="VARCHAR" />
+    <result column="C_Name" property="cName" jdbcType="VARCHAR" />
+    <result column="C_Password" property="cPassword" jdbcType="CHAR" />
+    <result column="C_Mail" property="cMail" jdbcType="VARCHAR" />
+    <result column="C_IP" property="cIp" jdbcType="VARCHAR" />
+    <result column="C_XMJP" property="cXmjp" jdbcType="VARCHAR" />
+    <result column="C_CORP" property="cCorp" jdbcType="VARCHAR" />
+    <result column="C_DEPT" property="cDept" jdbcType="VARCHAR" />
+    <result column="N_Valid" property="nValid" jdbcType="TINYINT" />
+    <result column="N_Order" property="nOrder" jdbcType="SMALLINT" />
+    <result column="userCode" property="usercode" jdbcType="VARCHAR" />
+    <result column="userPost" property="userpost" jdbcType="VARCHAR" />
+    <result column="C_ZW" property="cZw" jdbcType="VARCHAR" />
+    <result column="C_LINKUSER" property="cLinkuser" jdbcType="VARCHAR" />
+    <result column="N_RYLX" property="nRylx" jdbcType="INTEGER" />
+    <result column="N_SHOW_USER" property="nShowUser" jdbcType="TINYINT" />
+    <result column="N_TXL" property="nTxl" jdbcType="INTEGER" />
+    <result column="N_SFKQ" property="nSfkq" jdbcType="TINYINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    C_ID, C_LoginID, C_Name, C_Password, C_Mail, C_IP, C_XMJP, C_CORP, C_DEPT, N_Valid, 
+    N_Order, userCode, userPost, C_ZW, C_LINKUSER, N_RYLX, N_SHOW_USER, N_TXL, N_SFKQ
+  </sql>
+  
+  <select id="getAllUserList" resultMap="BaseResultMap" > 
+    select 
+    <include refid="Base_Column_List" />
+    from t_aty_user
+  </select>
+
+</mapper>
